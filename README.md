@@ -53,6 +53,8 @@
 
 -----|label2BIO.py #预处理文件，将源人民日报标注文件，转化为相应的BIO文件
 
+-----|wordvector.py #词嵌入代码
+
 main.py # 主文件
 
 count.json #数据向量表示文件，字典->json
