@@ -3,13 +3,33 @@
 
 ## Code Tree
 
+假定所有文件已被处理成如下结构：
+
 |data
 
 -----|train #训练集
+  
+----------|name_train.txt
+
+----------|place_train.txt
+
+----------|orgnization_train.txt
 
 -----|test #测试集
+  
+----------|name_test.txt
+
+----------|place_test.txt
+
+----------|orgnization_test.txt
 
 -----|val #验证集
+  
+----------|name_val.txt
+
+----------|place_val.txt
+
+----------|orgnization_val.txt
 
 |datasets
 
@@ -36,6 +56,10 @@
 main.py # 主文件
 
 count.json #数据向量表示文件，字典->json
+
+my_word2vec_skip #词向量模型
+
+stopwords.txt #停词
 
 train_val_test.py #训练+验证+测试相关代码
 
