@@ -3,3 +3,4 @@ tensorboardX
 sklearn
 json
 jiaba
+gensim
