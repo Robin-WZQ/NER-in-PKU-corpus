@@ -25,7 +25,7 @@ python utils/label2BIO.py
 python utils/count,py
 ```
 
-最终会产生一个中间文件count.json，存储者top-k个词语的one-hot向量表示。
+最终会产生一个中间文件count.json，存储着top-k个词语的one-hot向量表示。
 
 4. 训练
 
