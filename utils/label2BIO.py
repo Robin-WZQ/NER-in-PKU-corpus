@@ -9,8 +9,9 @@ def name_label(file_name):
     对名字进行标注\n
     列举一些例子:
         张/nrf  仁伟/nrg  -> 张/B 仁伟/I \n
-        陈/nrf  方/nrf  安生/nrg -> 陈/B  方/I  安生/I\n
-        张/nrf  教授/n -> 张/B  教授/O
+        陈/nrf  方/nrf  安生/nrg -> 陈/B  方/I  安生/I \n
+        张/nrf  教授/n -> 张/B  教授/O \n
+        北京市/ns -> 北京市/O 
 
     '''
     with open(file_name,'r',encoding='utf-8') as inp,open('name_test.txt','w',encoding='utf-8') as outp:
@@ -56,8 +57,9 @@ def place_label(file_name):
     '''
     对地名进行标注\n
     列举一些例子:
-        四川省/ns  天津市/ns  -> 四川省/B  天津市/B\n
-        [广西/ns  环江/ns  毛南族/nz  自治县/n]ns  -> 广西/B  环江/I  毛南族/I  自治县/I
+        四川省/ns  天津市/ns  -> 四川省/B  天津市/B \n
+        [广西/ns  环江/ns  毛南族/nz  自治县/n]ns  -> 广西/B  环江/I  毛南族/I  自治县/I\n
+        联合国/nt -> 联合国/O 
 
     难点在于对"[]"的处理
     '''
@@ -105,8 +107,15 @@ def place_label(file_name):
 
 def org_label(file_name):
     '''
-    对机构名进行标注
-    同理
+    对机构名进行标注\n
+    和地名标注同理\n
+    列举一些例子:
+        联合国/nt -> 联合国/B \n
+        [中国/ns 计算机/n 学会/n]nt -> 中国/B 计算机/I 学会/I \n
+        [浙江/ns 省委/n]nt -> 浙江/B 省委/I \n
+        [联合国/nt  教科文/jb  组织/n]nt -> 联合国/B  教科文/I  组织/I\n
+        北京市/ns -> 北京市/O  
+
     '''
     with open(file_name,'r',encoding='utf-8') as inp,open('orgnization_test.txt','w',encoding='utf-8') as outp:
         for line in inp.readlines():
