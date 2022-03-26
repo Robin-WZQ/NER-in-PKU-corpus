@@ -13,12 +13,18 @@ import torch
 import torch.optim
 import torch.utils
 import warnings
+import time
 warnings.filterwarnings("ignore")
 
 
 def main():
     # 自定义使用gpu or cpu
     device=torch.device ( "cuda:0" if torch.cuda.is_available () else "cpu")
+
+    n_epoches = 15 # 训练轮数
+    train_batch_size = 50 # 训练batch
+    val_batch_size = 100 # 验证batch
+    test_batch_size = 100 # 测试batch
 
     # 导入数据
     train_dataset = WordsDataset(function="name",dataset="train")
@@ -32,13 +38,12 @@ def main():
                                             shuffle=False)
     # 装载验证集
     val_loader = torch.utils.data.DataLoader(dataset=val_dataset,
-                                            batch_size=test_batch_size,
+                                            batch_size=val_batch_size,
                                             shuffle=False)
     # 装载测试集
     test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
                                             batch_size=test_batch_size,
                                             shuffle=True)
-
     # 导入模型至设备
     net = softmax_net().to(device)
 
@@ -49,20 +54,20 @@ def main():
         if 'bias' in name:
             init.constant_(param, val=1) # 偏置使用常数
 
-    optimizor= torch.optim.SGD(net.parameters(),lr=0.04,momentum=0.9) # 使用SGD优化器
+    optimizor= torch.optim.SGD(net.parameters(),lr=0.01,momentum=0.9) # 使用SGD优化器
     criterion = torch.nn.CrossEntropyLoss() # 交叉熵损失函数
 
-    n_epoches = 20 # 训练轮数
-    train_batch_size = 100 # 训练batch
-    test_batch_size = 100 # 测试batch
 
     # 训练
+    since = time.time()
     train(device,train_loader,optimizor,criterion,n_epoches,train_batch_size,net,val_loader)
+    time_elapsed = time.time() - since
+    print('训练结束！用时:{:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
 
     # 测试
-    testall(device,test_loader,net)
+    # testall(device,test_loader,net)
 
-    print("Done!")
+    # print("Done!")
 
 if __name__ == "__main__":
     main()
