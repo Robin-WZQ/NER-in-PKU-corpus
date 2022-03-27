@@ -65,9 +65,9 @@ def main():
     print('训练结束！用时:{:.0f}m {:.0f}s'.format(time_elapsed // 60, time_elapsed % 60))
 
     # 测试
-    # testall(device,test_loader,net)
+    testall(device,test_loader,net)
 
-    # print("Done!")
+    print("Done!")
 
 if __name__ == "__main__":
     main()
