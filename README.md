@@ -84,3 +84,6 @@ train_val_test.py # 训练+验证+测试相关代码
 visualize.py # 可视化函数，给定一段文字，用训练好的模型进行识别
 
 stopwords.txt # 停词，在计算word2vector时使用的
+
+## RF
+https://github.com/Robin-WZQ/BIT-AI-Review
