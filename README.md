@@ -22,7 +22,7 @@ python utils/label2BIO.py
 3. 词频统计+one-hot
 
 ```
-python utils/count,py
+python utils/count.py
 ```
 
 最终会产生一个中间文件count.json，存储着top-k个词语的one-hot向量表示。
